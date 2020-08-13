@@ -1,134 +1,67 @@
-*
-    margin: 0
-    padding: 0
-    box-sizing: border-box
-    font-family: 'Roboto', sans-serif
 .container
-    display: flex
-    width: 100%
-    height: 100%
-    min-height: 100vh
-    flex-wrap: wrap
-    justify-content: center
-    align-items: center 
-    padding: 15px
-    background-repeat: no-repeat
-    background-position: center
-    background-size: cover
-input
-    outline: none
-    border: none
-    font-size: 18px
-    width: 100%
-    height: 55px
-    &:focus
-        border-color: transparent !important 
-        ::-webkit-input-placeholder 
-            color:#adadad
-        :-moz-placeholder
-            color: #adadad
-        ::-moz-placeholder
-            color: #adadad
-        :-ms-input-placeholder
-            color: #adadad
-    &.error
-        border-color: red
+    width: 600px
+    margin: 0 auto
 h1
-    color: red
-.form-item
-    position: relative
-    width: 100%
-    border-bottom: 2px solid #d9d9d9
-    margin-bottom: 26px
-    margin-top: 5px
-    &.errorInput
-        border-bottom-color: #fc5c65
-        .errorMessage
-            display: block
-    .errorMessage
-        display: none
-        margin-bottom: 8px
-        font-size: 16px
-        color: #fc5c65
-.container-login 
-    width: 500px
+    text-align: center
+.tile.active
+    animation: light .5s reverse
+@keyframes light
+    0%
+        opacity: 0.4
+    100%
+        opacity: 1
+.tile
+    opacity: 0.4
+    -webkit-transition: opacity 0.2s ease
+    -moz-transition: opacity 0.2s ease
+    -ms-transition: opacity 0.2s ease
+    -o-transition: opacity 0.2s ease
+    transition: opacity 0.2s ease
+.red, .blue, .yellow, .green
+    height: 296px
+    -webkit-border-radius: 150px 150px 150px 150px
+    border-radius: 150px 150px 150px 150px
+    position: absolute
+    cursor: pointer
+    // text-indent: 10000px
+.red
+    background: red
+    clip: rect(0px, 300px, 150px, 150px)
+    width: 296px
+.blue
+    background: blue
+    clip: rect(0px, 150px, 150px, 0px)
+    width: 300px
+.yellow
+    background: yellow
+    clip: rect(150px, 150px, 300px, 0px)
+    width: 300px
+.green
+    background: green
+    clip: rect(150px,300px, 300px, 150px)
+    width: 296px
+.simon
     background: #fff
-    border-radius: 10px
-    padding-top: 54px
-    padding-bottom: 63px
-    padding-left: 15px
-    padding-right: 15px
-.label-input
-    font-size: 16px
-.register-title
-    display: block
-    font-size: 39px
-    color: #333333
-    line-height: 1.2
-    text-align: center
-    margin-bottom: 49px
-    border-bottom: 2px solid black
-.pageName
-    text-align: center
-.pageName-title
-    display: inline-block
-    margin-bottom: 36px
-    text-align: center
-    line-height: 1.2
-    color: #333
-    font-size: 24px
-    border-bottom: 2px solid black
-.blockDocument
-    padding-bottom: 24px
-    .radioButton
-        width: auto
-        height: auto
-.blockDocument-type
-    padding-top: 12px
-.noSendSms
-    width: auto
-    height: auto
-    padding-top: 20px
-.form-item-selector
-    margin-bottom: 10px
-.register
-    text-align: center
-.clickPrevButton,.clickNextButton,.clickRegisterButton
-    text-decoration: none
-    outline: none
-    display: inline-block
-    width: 140px
-    height: 45px
-    // line-height: 45px
-    border-radius: 45px
-    font-size: 12px
-    text-transform: uppercase
-    text-align: center
-    letter-spacing: 3px
-    // font-weight: 600
-    color: white
-    background: black
-    box-shadow: 0 8px 15px rgba(0,0,0,.1)
-    transition: all .3s ease .0s
-    &:hover
-        background: #2EE59D
-        box-shadow: 0 15px 20px rgba(46,229,157,.4)
-        color: black
-        transform: translateY(-7px)
-.clickButtons
-    display: flex
-    justify-content: space-between
-.textSubmit
-    text-align: center
-    margin-top: 24px
-option
-    font-size: 18px
-p
-    font-size: 18px
-li
-    font-size: 18px
-.radioLabel
-    font-size: 18px
+    position: relative
+    float: left
+    margin-right: 3em
+    width: 300px
+    height: 300px
+    -webkit-border-radius: 150px 150px 150px 150px
+    border-radius: 150px 150px 150px 150px
+// Должно быть 3 уровня сложности - легкий, нормальный и сложный•Легкий: время между каждой кнопкой в последовательности должно быть 1,5 сек  
+// •Средний: время между каждой кнопкой в последовательности должно быть 1,0 сек.  
+// •Сложный: время между каждой кнопкой в последовательности должно быть 0,4 сек.  
+ul
+    list-style: none
+ul, li
+    padding: 0
+    margin: 0
+.red:hover, .blue:hover, .yellow:hover, .green:hover
+    border: 2px solid black
+
+
+
     
     
     

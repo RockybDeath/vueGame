@@ -1,10 +1,8 @@
 import Vue from "vue";
-import Vuelidate from 'vuelidate'
 
 import Main from "./vue/Main.vue";
 
 Vue.config.devtools = true
-Vue.use(Vuelidate);
 new Vue({
     el: "#app",
     render: p => p(Main)
