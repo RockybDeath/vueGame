@@ -1,6 +1,8 @@
 <template>
     <div>
-        <p class="title">Address</p>
+        <div class="pageName">
+            <p class="pageName-title">Address</p>
+        </div>
         <div class="form-item" :class="{ 'errorInput': $v.index.$error }">
             <label class="label-input">Index</label>
             <input type="text" placeholder="Type your index" v-model.trim="$v.index.$model">

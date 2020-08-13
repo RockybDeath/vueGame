@@ -1,6 +1,8 @@
 <template>
     <div>
-        <p class="title">Personal Info</p>
+        <div class="pageName">
+            <p class="pageName-title">Personal Info</p>
+        </div>
         <div class="form-item" :class="{ 'errorInput': $v.surname.$error }">
             <label class="label-input">Surname</label>
             <input type="text" placeholder="Type your surname" v-model.trim="$v.surname.$model">

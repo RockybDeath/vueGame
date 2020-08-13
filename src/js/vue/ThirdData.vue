@@ -1,6 +1,8 @@
 <template>
     <div>
-        <p class="title">{{document}}</p>
+        <div class="pageName">
+            <p class="pageName-title">{{document}}</p>
+        </div>
         <div class="blockDocument">
             <label class="label-input">Choose type of document</label>
             <div v-for="type in typesOfDocument" v-bind:key="type" class="blockDocument-type">

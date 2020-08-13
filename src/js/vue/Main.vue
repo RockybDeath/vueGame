@@ -2,7 +2,7 @@
     <div class="container" style="background-image:url('src/img/bg.jpg')">
         <div class="container-login">
             <form @submit.prevent="submit">
-                <span class="register-title">Registration</span>
+                    <span class="register-title">Registration</span>
                 <keep-alive>
                      <component v-bind:is="currentComponentChange" ref="childComponent"></component>
                 </keep-alive>
@@ -11,6 +11,8 @@
                     <button type="submit" v-show="(count === 2)" class="clickRegisterButton">Registration</button>
                     <button type="button" v-on:click="nextStep"  v-show="!(count === 2)" class="clickNextButton">Next</button>
                 </div>
+                <p v-if="submitCan === 'Ok'" class="textSubmit">Thanks for register!</p>
+                <p v-if="submitCan === 'Error'" class="textSubmit">Please fill the form correctly!</p>
             </form>
         </div>
     </div>
@@ -34,7 +36,8 @@ export default {
         count: 0,
         dataAll:[],
         firstDataSubmit:false,
-        secondDataSubmit:false
+        secondDataSubmit:false,
+        submitCan:""
     }
  },
  validations: {
@@ -68,9 +71,11 @@ export default {
      submit(){
          var data=this.$refs.childComponent.submitDateToParent();
          if(data.canTakeInfo&&this.firstDataSubmit&&this.secondDataSubmit){
+            this.submitCan="Ok";
             this.dataAll.push(data)
             console.log(this.dataAll)
          } else{
+            this.submitCan="Error";
             console.log("Invalid");
          }
         //  e.preventDefault();
