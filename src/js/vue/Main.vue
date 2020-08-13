@@ -2,7 +2,9 @@
     <div class="container" style="background-image:url('src/img/bg.jpg')">
         <div class="container-login">
             <form @submit.prevent="submit">
+                <div class="register">
                     <span class="register-title">Registration</span>
+                </div>
                 <keep-alive>
                      <component v-bind:is="currentComponentChange" ref="childComponent"></component>
                 </keep-alive>

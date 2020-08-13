@@ -7,7 +7,7 @@
             <label class="label-input">Choose type of document</label>
             <div v-for="type in typesOfDocument" v-bind:key="type" class="blockDocument-type">
                 <input class="radioButton" type="radio" :value="type.message" v-model="document">
-                <label>{{type.message}}</label>
+                <label class="radioLabel">{{type.message}}</label>
             </div>
             <p class="errorMessage" v-if="!$v.document.required">Choose document</p>
         </div>
