@@ -1,8 +1,23 @@
+*
+    margin: 0
 .container
     width: 600px
     margin: 0 auto
 h1
     text-align: center
+h2
+    margin-top: 40px
+.startButton
+    margin: 10px 0px
+.blockDifficult
+    margin-top: 5px
+p
+    margin: 10px 0px
+.errorMessage
+    color: red
+    font-size: 24px
+h3
+    display: inline-block
 .tile.active
     animation: light .5s reverse
 @keyframes light
@@ -23,7 +38,6 @@ h1
     border-radius: 150px 150px 150px 150px
     position: absolute
     cursor: pointer
-    // text-indent: 10000px
 .red
     background: red
     clip: rect(0px, 300px, 150px, 150px)
@@ -48,10 +62,7 @@ h1
     width: 300px
     height: 300px
     -webkit-border-radius: 150px 150px 150px 150px
-    border-radius: 150px 150px 150px 150px
-// Должно быть 3 уровня сложности - легкий, нормальный и сложный•Легкий: время между каждой кнопкой в последовательности должно быть 1,5 сек  
-// •Средний: время между каждой кнопкой в последовательности должно быть 1,0 сек.  
-// •Сложный: время между каждой кнопкой в последовательности должно быть 0,4 сек.  
+    border-radius: 150px 150px 150px 150px 
 ul
     list-style: none
 ul, li
