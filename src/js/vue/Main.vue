@@ -22,25 +22,6 @@
                 <input class="radioButton" type="radio" :value="difficult.value" v-model="difficultTime" :disabled="gameActive === true">
                 <label class="radioLabel">{{difficult.message}}</label>
             </div>
-            <div class="audioPlayer">
-
-            </div>
-            <audio id="red">
-                <source src="src/sounds/red.mp3" type="audio/mp3">
-                <source src="src/sounds/red.ogg" type="audio/ogg">
-            </audio> 
-            <audio id="blue">
-                <source src="src/sounds/red.mp3" type="audio/mp3">
-                <source src="src/sounds/red.ogg" type="audio/ogg">
-            </audio>
-            <audio id="yellow">
-                <source src="src/sounds/red.mp3" type="audio/mp3">
-                <source src="src/sounds/red.ogg" type="audio/ogg">
-            </audio>
-            <audio id="green">
-                <source src="src/sounds/red.mp3" type="audio/mp3">
-                <source src="src/sounds/red.ogg" type="audio/ogg">
-            </audio>
         </div>
     </div>
 </template>
