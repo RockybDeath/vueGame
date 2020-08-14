@@ -11,13 +11,36 @@
         </div>
         <div class="game-options">
             <h2>Round: {{round}}</h2>
-            <button type="button" class="startButton" v-on:click="startGame">Start</button>
-            <p v-if="lose">YOU LOSE</p>
-            <p v-if="canClick">You can click</p>
-            <div v-for="difficult in difficultOfGame" v-bind:key="difficult" class="blockDocument-type">
-                <input class="radioButton" type="radio" :value="difficult.value" v-model="difficultTime">
+            <button type="button" class="startButton" v-on:click="startOptions">Start</button>
+            <button type="button" class="startButton" v-on:click="endGame">End</button>
+            <p v-if="lose" class="errorMessage">YOU LOSE</p>
+            <div>
+                <h3>Wait for command:</h3><h3 v-if="buttonsActive">You can click</h3>
+            </div>
+            <p>Options</p>
+            <div v-for="difficult in difficultOfGame" v-bind:key="difficult" class="blockDifficult">
+                <input class="radioButton" type="radio" :value="difficult.value" v-model="difficultTime" :disabled="gameActive === true">
                 <label class="radioLabel">{{difficult.message}}</label>
             </div>
+            <div class="audioPlayer">
+
+            </div>
+            <audio id="red">
+                <source src="src/sounds/red.mp3" type="audio/mp3">
+                <source src="src/sounds/red.ogg" type="audio/ogg">
+            </audio> 
+            <audio id="blue">
+                <source src="src/sounds/red.mp3" type="audio/mp3">
+                <source src="src/sounds/red.ogg" type="audio/ogg">
+            </audio>
+            <audio id="yellow">
+                <source src="src/sounds/red.mp3" type="audio/mp3">
+                <source src="src/sounds/red.ogg" type="audio/ogg">
+            </audio>
+            <audio id="green">
+                <source src="src/sounds/red.mp3" type="audio/mp3">
+                <source src="src/sounds/red.ogg" type="audio/ogg">
+            </audio>
         </div>
     </div>
 </template>
@@ -37,7 +60,7 @@ export default {
         difficultTime:1500,
         selectByHuman: [],
         elementPlay: document.querySelector(".red"),
-        canClick: false
+        red:true
     }
  },
  validations: {
@@ -46,47 +69,36 @@ export default {
     
  },
  methods: {
-    startGame(){
-        if(!this.gameActive){
+    startOptions(){
         this.gameActive = true
+        this.lose = false
+        this.startGame()
+    },
+    startGame(){
+        if(this.gameActive){
         var i=0;
         this.round++
-        this.lose = false
-        this.sequence.push(this.randomNumber());
+        this.sequence.push(this.randomColor());
         this.selectByHuman = this.sequence.slice(0);
-        this.elementPlay=document.querySelector("."+this.sequence[i]);
-        this.elementPlay.animate([{
-                    opacity: 0.6
-                },{
-                    opacity: 1
-                }],500)
-        // this.elementPlay.classList.add("active")
-        i++
         var interval = setInterval(() => {
-            // this.elementPlay.classList.remove("active")
-            // window.setTimeout(()=>{
-            //     element.classList.remove("active")
-            // },1000)
-            if(i >= this.sequence.length){
-                this.buttonsActive=true
-                this.canClick = true
-                clearInterval(interval)
-            } else{
-                this.elementPlay=document.querySelector("."+this.sequence[i]);
+            this.elementPlay=document.querySelector("."+this.sequence[i]);
+                this.playMusic(this.sequence[i])
                 this.elementPlay.animate([{
-                    opacity: 0.2
+                    opacity: 0.4
                 },{
                     opacity: 1
                 }],500)
-                // this.elementPlay.classList.add("active")
-                i++
-            } 
+            i++
+            if(i >= this.sequence.length){
+                clearInterval(interval)
+                this.buttonsActive=true
+            }
         }, this.difficultTime)
         } else{
             this.endGame()
         }
     },
-    randomNumber(){
+    randomColor(){
         var color = Math.floor((Math.random()*4)+1);
         switch(color){
             case(1): return "red"
@@ -99,13 +111,13 @@ export default {
         if(this.buttonsActive){
             var rightVariant = this.selectByHuman.shift()
             var selectHuman = e.target.getAttribute("value")
+            this.playMusic(selectHuman)
             if(this.selectByHuman.length === 0 && (rightVariant === selectHuman)){
                 this.buttonsActive = false
-                this.gameActive = false
-                this.canClick = false
-                this.startGame()
+                setTimeout(() => {
+                    this.startGame()
+                },1000)
             } else if(!(rightVariant === selectHuman)){
-                this.buttonsActive = false
                 this.endGame()
             }
         }
@@ -119,7 +131,6 @@ export default {
         this.elementPlay = document.querySelector(".red")
         this.lose = true
         this.gameActive = false
-        this.canClick = false
     },
     removeAnimation(e){
         if(this.buttonsActive){
@@ -130,6 +141,10 @@ export default {
         if(this.buttonsActive){
             e.target.classList.add("active")
         }
+    },
+    playMusic(id){
+        new Audio("src/sounds/"+id+".mp3").play();
+        new Audio("src/sounds/"+id+".ogg").play();
     }
  }
 };
